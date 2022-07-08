@@ -21,6 +21,11 @@
 
   <p>
     <strong>Characters:</strong>
-    <%= movie.characters %>
+    <% movie.characters.each do |character| %>
+      <%= character.name %> |
+      <%= character.history %>
+      <br>
+    <% end %>
   </p>
+  
 </div>

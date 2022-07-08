@@ -2,6 +2,12 @@
 
 <%= render @movie %>
 
+<% if @movie.image.attached? %>
+  <%= image_tag (@movie.image) %>
+  
+<% end %>
+ 
+
 <div>
   <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
   <%= link_to "Back to movies", movies_path %>
