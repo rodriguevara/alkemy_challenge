@@ -16,6 +16,15 @@
     <%= form.text_field :name %>
   </div>
 
+  <div class="form-group">
+    <% if @genre.image.attached? %>
+      <%= image_tag @genre.image, style: "width: 200px; display: block" %>
+    <% end %>
+
+    <%= form.label:image %>
+    <%= form.file_field :image, class: "form-control" %>
+  </div>
+
   <div>
     <%= form.submit %>
   </div>

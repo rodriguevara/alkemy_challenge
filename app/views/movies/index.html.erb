@@ -6,15 +6,16 @@
   <% @movies.each do |movie| %>
     <%= movie.name %>
     <br>
+    <p>
+      <%= link_to "Show this movie", movie %>
+    </p>
     <% if movie.image.attached? %>
       <%= image_tag (movie.image) %>
   
     <% end %>
     <br>
     <%= movie.creation_date %>
-    <p>
-      <%= link_to "Show this movie", movie %>
-    </p>
+    
   <% end %>
 </div>
 

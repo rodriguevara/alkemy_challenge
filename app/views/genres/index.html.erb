@@ -5,6 +5,11 @@
 <div id="genres">
   <% @genres.each do |genre| %>
     <%= render genre %>
+    <br>
+    <% if genre.image.attached? %>
+      <%= image_tag (genre.image) %>
+  
+    <% end %>
     <p>
       <%= link_to "Show this genre", genre %>
     </p>

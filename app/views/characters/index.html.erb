@@ -5,6 +5,11 @@
 <div id="characters">
   <% @characters.each do |character| %>
     <%= render character %>
+    <br>
+    <% if character.image.attached? %>
+      <%= image_tag (character.image) %>
+  
+    <% end %>
     <p>
       <%= link_to "Show this character", character %>
     </p>

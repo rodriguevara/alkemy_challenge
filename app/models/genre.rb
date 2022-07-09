@@ -10,4 +10,6 @@
 #
 class Genre < ApplicationRecord
     has_many :movies
+    has_one_attached :image, :dependent => :destroy
+
 end

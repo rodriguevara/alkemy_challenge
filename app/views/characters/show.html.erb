@@ -2,6 +2,11 @@
 
 <%= render @character %>
 
+<% if @character.image.attached? %>
+  <%= image_tag (@character.image) %>
+  
+<% end %>
+
 <div>
   <%= link_to "Edit this character", edit_character_path(@character) %> |
   <%= link_to "Back to characters", characters_path %>
