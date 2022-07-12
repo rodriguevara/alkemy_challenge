@@ -1,10 +1,12 @@
 class GenresController < ApplicationController
   before_action :set_genre, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /genres or /genres.json
   def index
     @genres = Genre.all
   end
+  
 
   # GET /genres/1 or /genres/1.json
   def show

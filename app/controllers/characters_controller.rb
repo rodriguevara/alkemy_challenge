@@ -1,9 +1,14 @@
 class CharactersController < ApplicationController
   before_action :set_character, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /characters or /characters.json
   def index
     @characters = Character.all
+  end
+
+  def searchc
+    @query = Character.where("name LIKE ?", "%" + params[:q] +"%")
   end
 
   # GET /characters/1 or /characters/1.json
@@ -49,8 +54,8 @@ class CharactersController < ApplicationController
 
   # DELETE /characters/1 or /characters/1.json
   def destroy
+    @character.movies.clear 
     @character.destroy
-
     respond_to do |format|
       format.html { redirect_to characters_url, notice: "Character was successfully destroyed." }
       format.json { head :no_content }

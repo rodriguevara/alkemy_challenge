@@ -1,9 +1,13 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!, except: [:index, :show]
   # GET /movies or /movies.json
   def index
     @movies = Movie.all
+  end
+
+  def search
+    @query = Movie.where("name LIKE ?", "%" + params[:q] +"%")
   end
 
   # GET /movies/1 or /movies/1.json
@@ -49,6 +53,7 @@ class MoviesController < ApplicationController
 
   # DELETE /movies/1 or /movies/1.json
   def destroy
+    @movie.characters.clear
     @movie.destroy
 
     respond_to do |format|
